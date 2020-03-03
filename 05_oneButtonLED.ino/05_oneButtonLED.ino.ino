@@ -1,20 +1,23 @@
 /*
  * Project: Using OneButton library
  * Description: Use oneButton to light and blink an LED
- * Author: 
- * Date: 
+ * Author: Nycole Davila
+ * Date: 03MAR2020 
  */
 
-#include "OneButton.h"
+#include <OneButton.h>
 
 // Setup OneButton on pin 23 
+OneButton button1(23, false)
 
+int buttonState = LOW;
+int flash = LOW;
 
 
 void setup() {
 
   Serial.begin(9600);
-
+  while (!Serial)
 
 } 
 

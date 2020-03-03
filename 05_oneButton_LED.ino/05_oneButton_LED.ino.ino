@@ -10,7 +10,6 @@
 // Setup OneButton on pin 23
 OneButton button1(23, false);
 
-// Create variables buttonState and flash
 int buttonState = LOW;
 int flash = LOW;
 
@@ -39,9 +38,11 @@ void loop() {
   // keep watching the push buttons:
   button1.tick();
 } // loop
-
-
-// ----- button 1 callback functions
+/*void loop() {
+  // keep watching the push buttons:
+  button1.tick();
+} // loop
+if(buttonState == LOW)
 
 // This function will be called when the button1 was pressed 1 time.
 void click1() {
@@ -51,10 +52,15 @@ void click1() {
   Serial.print("buttonState = ");
   Serial.println(buttonState);
   
+  digitalWrite(ledPin, HIGH);
+  delay (50);
+  digitalWrite(ledPin, LOW);
+  delay (50);
   } 
   
-// click1
-
+// click1{
+ else(buttonState = HIGH)
+ }
 // This function will be called when the button1 was pressed 2 times in a short timeframe.
 // change state of flash and print
 void doubleclick1() {
@@ -63,13 +69,16 @@ void doubleclick1() {
   flash = !flash;
   Serial.print("flash =");
   Serial.println(flash);
-} // doubleclick1
 
-
+  digitalWrite(ledPin, HIGH);
+  delay (50);
+  digitalWrite(ledPin, LOW);
+  delay (50);
+}
 // This function will be called once, when the button1 is pressed for a long time.
 void longPressStart1() {
 // longPressStart1
  Serial.println("Button 1 Long Press Start");
 // print longPress
   Serial.println("Button 1 Long Press...");
-}
+} */
