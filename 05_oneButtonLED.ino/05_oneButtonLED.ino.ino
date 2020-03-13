@@ -8,40 +8,65 @@
 #include <OneButton.h>
 
 // Setup OneButton on pin 23 
-OneButton button1(23, false)
+OneButton button1(23, false);
 
 int buttonState = LOW;
 int flash = LOW;
-
+int ledPin5 = 5;
+int ledPin6 = 6;
+int ledPin7 = 7;
 
 void setup() {
 
   Serial.begin(9600);
-  while (!Serial)
+  while (!Serial);
+// Link oneButton library to functions
+button1.attachClick(click1);
+button1.attachDoubleClick(doubleclick1);
+button1.setClickTicks(250);
+button1.setPressTicks(2000);
+//Other clicks that may be used:
+//button1.attachLongPressStart(longPressStart1)
+//button1.attachLongPressStop(longPressStop1)
 
+  pinMode (5, OUTPUT);
+
+if (Serial)Serial.println("Starting OneButton... Want to play a Game?");
 } 
 
 void loop() {
   // keep watching the push button:
   button1.tick();
-  
-  // light or blink LED based on buttonState and Flash 
+  if (buttonState == LOW){
+    digitalWrite (5, LOW);
+  }
+  else
+  {
+  digitalWrite (5, HIGH);
+if (flash == true){
+  digitalWrite(ledPin5, HIGH); 
+  delay(50);
+  digitalWrite(ledPin5, LOW);
+  delay(50);
+  }
+} 
+}
+
+void click1() {
+Serial.println("Button has been clicked..");
+buttonState = !buttonState;
+Serial.print("buttonState = ");
+Serial.println(buttonState); 
 } 
 
 
-// ----- button 1 callback functions
-
-// This function will be called when the button1 was pressed 1 time.
-void click1() {
-
-// change button state
-  
-} // click1
-
-
-// This function will be called when the button1 was pressed 2 times in a short timeframe.
 void doubleclick1() {
+    // light or blink LED based on buttonState and Flash 
+  if (buttonState == HIGH);
+    flash = !flash;
 
-// change flash state
-
-} // doubleclick1
+Serial.println("Button has been double clicked..");
+buttonState = !buttonState;
+Serial.print("buttonState = ");
+Serial.println(buttonState); 
+} 
